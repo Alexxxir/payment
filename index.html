@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="index.css">
+        <title>Оплата</title>
+    </head>
+    <body>
+        <div class="main-block">
+            <header class="head">
+                <div class="one-line">
+                    <h3 style="float: top">Индивидуальный предприниматель Боря</h3>
+                    <a>+79196236913</a>
+                    <a href="mailto:borya@mail.ru">borya@mail.ru</a><br>
+                    <a href="mailto:borya@mail.ru">www.borya.cats</a><br>
+                    <a href=".">Информация о компании</a>
+                    <a href=".">Показать реквизиты</a>
+                </div>
+                <div class="one-line">
+                    <img class="header-img" src="https://klopik.com/uploads/posts/2010-04/thumbs/1271140649_0_3ca8f_5756d194_xl.jpg">
+                </div>
+            </header>
+            <hr>
+            <div class="middle">
+                <input type="radio" id="pay" name="select-1">
+                <label id="pay-label" for="pay">Заплатить</label>&#160;&#160;
+                <input type="radio" checked="checked" id="ask" name="select-1">
+                <label id="ask-label" for="ask">Запросить платёж</label>&#160;&#160;
+                <br>
+                <div class="ask">
+                    <form action=".">
+                        <div class="form-block">
+                            Создайте платёжку, а Индивидуальный предприниматель Боря подпишет
+                            её у себя в интернет-банке
+                            <table class="card-table">
+                                <tr>
+                                    <td>ИНН получателя</td>
+                                    <td>
+                                        <input class="form-value" type="text" placeholder="ИНН или название получателя">
+                                    </td>
+                                </tr>
+                                <tr></tr>
+                                <tr>
+                                    <td>БИК</td>
+                                    <td>
+                                        <input class="form-value" type="text">
+                                    </td>
+                                </tr>
+                                <tr></tr>
+                                <tr>
+                                    <td>Номер счёта</td>
+                                    <td>
+                                        <input class="form-value" type="text">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>За что</td>
+                                    <td>
+                                        <select>
+                                            <option>НДС 18%</option>
+                                            <option>НДС 10%%</option>
+                                            <option>без НДС</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Сколько</td>
+                                    <td>
+                                        <input class="form-value" type="text">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Номер телефона</td>
+                                    <td>
+                                        <input class="form-value" type="text" placeholder="+7">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Эл.почта</td>
+                                    <td>
+                                        <input class="form-value" type="text" placeholder="Для уведомлений об оплате">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="submit" value="Создать платёж">
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </form>
+                </div>
+                <div class="pay">
+                    <input type="radio" id="from-own-bank" name="select">
+                    <label id="from-own-bank-label" for="from-own-bank">Из своего интернет банка</label>&#160;&#160;
+                    <input type="radio" checked="checked" id="from-any-bank" name="select">
+                    <label id="from-any-bank-label" for="from-any-bank">С карты любого банка</label>&#160;&#160;
+                    <div class="from-any-bank">
+                        <form action=".">
+                            <div class="card-and-form">
+                                <div class="card">
+                                    <table class="card-table">
+                                        <tr>
+                                            <th colspan="2">
+                                                <input class="card-name" type="text" placeholder="Номер карты">
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input class="card-value" type="text" placeholder="ММ/ГГ">
+                                            </td>
+                                            <td>
+                                                <input class="card-value" type="text" placeholder="CVC">
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="form-block">
+                                    <table class="card-table">
+                                        <tr>
+                                            <td>Сумма</td>
+                                            <td>
+                                                <input class="form-value" type="text" placeholder="от 1000 до 75000 р">
+                                            </td>
+                                        </tr>
+                                        <tr></tr>
+                                        <tr>
+                                            <td>Комментарий</td>
+                                            <td>
+                                                <input class="form-value" type="text" placeholder="До 150 символов">
+                                            </td>
+                                        </tr>
+                                        <tr></tr>
+                                        <tr>
+                                            <td>Ваша эл.почта</td>
+                                            <td>
+                                                <input class="form-value" type="text" placeholder="Для квитанций об оплате">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="submit" value="Заплатить">
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="from-own-bank">
+                        <form action=".">
+                            <div class="form-block">
+                                Сформируйте платёжку и загрузите её в свой банк для подписи
+                                <table class="card-table">
+                                    <tr>
+                                        <td>От кого</td>
+                                        <td>
+                                            <input class="form-value" type="text" placeholder="ИНН или название плательщика">
+                                        </td>
+                                    </tr>
+                                    <tr></tr>
+                                    <tr>
+                                        <td>БИК</td>
+                                        <td>
+                                            <input class="form-value" type="text">
+                                        </td>
+                                    </tr>
+                                    <tr></tr>
+                                    <tr>
+                                        <td>Номер счёта</td>
+                                        <td>
+                                            <input class="form-value" type="text">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>За что</td>
+                                        <td>
+                                            <select>
+                                                <option>НДС 18%</option>
+                                                <option>НДС 10%%</option>
+                                                <option>без НДС</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Сколько</td>
+                                        <td>
+                                            <input class="form-value" type="text">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="submit" value="Получить файл для интернет банка">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <footer class="footer">
+                <h3>О компании Индивидуальный предприниматель Боря</h3>
+                <div class="block-info">
+                    <div class="img-block">
+                        <img class="block-img" src="https://megatoys24.ru/uploads/all/68/8b/bc/688bbcb1cb42a0333d4a98125cb3f33e.jpg">
+                    </div>
+                    Игрушечная мышь<br>
+                    123 руб.
+                </div>
+                <div class="block-info">
+                    <div class="img-block">
+                        <img class="block-img" src="https://kostochka38.ru/media/CACHE/images/photos/zooirkutsk/t2470/e1acc89e33429a141b8239b8b07b5cc6.jpg">
+                    </div>
+                    Миска<br>
+                    43 руб.
+                </div>
+                <div class="block-info">
+                    <div class="img-block">
+                        <img class="block-img" src="http://murkote.com/wp-content/uploads/2016/05/kogtetochka-svoimi-rukami-5.jpg">
+                    </div>
+                    Точилка для когтей<br>
+                    142 руб.
+                </div>
+                <div class="some-info">
+                    Ко́шка, или дома́шняя ко́шка (лат. Félis silvéstris cátus), — домашнее животное, одно из наиболее популярных[1] (наряду с собакой) «животных-компаньонов»[2][3][4].
+                    С точки зрения научной систематики, домашняя кошка — млекопитающее семейства кошачьих отряда хищных. Ранее домашнюю кошку нередко рассматривали как отдельный биологический вид. С точки зрения современной биологической систематики домашняя кошка (Felis silvestris catus) является подвидом лесной кошки (Felis silvestris)[5].
+                </div>
+                <div class="contacts">
+                Контакты:
+                <a>+79196236913</a>
+                <a href="https://www.borya.cats">www.borya.cats</a>
+                <a href="mailto:borya@mail.ru">05-11-98@mail.ru</a>
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>
