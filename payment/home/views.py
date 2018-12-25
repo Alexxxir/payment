@@ -35,7 +35,7 @@ def home(request):
         elif 'pay' in post:
             card_payment = CardPayments(
                 card_num=post.get('card_num'),
-                card_info=post.get('card_info'),
+                card_info=post.get('card-info'),
                 cvc=post.get('cvc'),
                 how_many=int(post.get('sum')),
                 comment=post.get('comment'),
