@@ -132,61 +132,28 @@ div.card-and-form
     display: table;
 }
 
-#from-any-bank:checked ~ div.from-any-bank
-{
-    display: table;
-    background-color: lightgrey;
-}
-
-#from-any-bank:checked ~ #from-any-bank-label
-{
-    background-color: lightgrey;
-}
-
-#from-own-bank:checked ~ #from-own-bank-label
-{
-    background-color: lightgrey;
-}
-
-#from-own-bank:checked ~ div.from-own-bank
-{
-    display: table;
-    background-color: lightgrey;
-}
-
 div.from-any-bank
 {
-    display: none;
+    display: table;
+    background-color: lightgrey;
+}
+
+#from-own-bank-label-1
+{
+    font-size: 20px;
+    background-color: lightgrey;
+}
+
+#from-any-bank-label-1
+{
+    font-size: 20px;
+    background-color: lightgrey;
 }
 
 div.from-own-bank
 {
-    display: none;
-}
-
-#from-any-bank
-{
-    display: none;
-}
-
-#from-own-bank
-{
-    display: none;
-}
-
-div.ask
-{
-    display: none;
-}
-
-div.pay
-{
-    display: none;
-}
-
-#pay:checked ~ div.pay
-{
     display: table;
+    background-color: lightgrey;
 }
 
 #pay:checked ~ #pay-label
@@ -211,22 +178,12 @@ div.pay
     color: blue;
 }
 
-#ask:checked ~ div.ask
-{
-    display: table;
-}
-
-#ask
-{
-    display: none;
-}
-
-#pay
-{
-    display: none;
-}
-
 div.contacts
 {
     margin: 10px;
+}
+
+input[aria-invalid="true"] {
+    border: 1px solid #f00;
+    box-shadow: 0 0 4px 0 #f00;
 }

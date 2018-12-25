@@ -1,0 +1,45 @@
+table
+{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th
+{
+    background: lavender;
+    text-align: left;
+}
+
+td
+{
+    text-align: center;
+}
+
+th, td
+{
+    border: 1px solid black;
+    padding: 4px;
+}
+
+.choose
+{
+   display: none;
+}
+
+#pay-label, #ask-label
+{
+    font-size: 20px;
+    font-weight: normal;
+}
+
+input#pay:checked ~ #pay-label
+{
+    background: lavender;
+    font-weight: bold;
+}
+
+input#ask:checked ~ #ask-label
+{
+    background: lavender;
+    font-weight: bold;
+}

@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="index.css">
+        <script src = "//ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+        <script type="text/javascript" src="/static/scripts/index.js"></script>
+        <link rel="stylesheet" type="text/css" href="/static/css/index.css">
         <title>Оплата</title>
     </head>
-    <body>
+    <body ng-controller="myAppCtrl">
         <div class="main-block">
             <header class="head">
                 <div class="one-line">
@@ -22,13 +26,12 @@
             </header>
             <hr>
             <div class="middle">
-                <input type="radio" id="pay" name="select-1">
-                <label id="pay-label" for="pay">Заплатить</label>&#160;&#160;
-                <input type="radio" checked="checked" id="ask" name="select-1">
-                <label id="ask-label" for="ask">Запросить платёж</label>&#160;&#160;
+                <label id="pay-label" ng-click="pay=false">Заплатить</label>&#160;&#160;
+                <label id="ask-label" ng-click="pay=true">Запросить платёж</label>&#160;&#160;
                 <br>
-                <div class="ask">
-                    <form action=".">
+                <div class="ask" ng-show="pay">
+                    <form method="POST" action="." id="your_bank" @submit="your_bank">
+                        {% csrf_token %}
                         <div class="form-block">
                             Создайте платёжку, а Индивидуальный предприниматель Боря подпишет
                             её у себя в интернет-банке
@@ -36,27 +39,38 @@
                                 <tr>
                                     <td>ИНН получателя</td>
                                     <td>
-                                        <input class="form-value" type="text" placeholder="ИНН или название получателя">
+                                        <input class="form-value" type="text"
+                                               placeholder="ИНН или название получателя"
+                                               name="inn"
+                                               id="inn"
+                                               required
+                                        >
                                     </td>
                                 </tr>
                                 <tr></tr>
                                 <tr>
                                     <td>БИК</td>
                                     <td>
-                                        <input class="form-value" type="text">
+                                        <input class="form-value" type="text"
+                                               name="bik"
+                                               required
+                                        >
                                     </td>
                                 </tr>
                                 <tr></tr>
                                 <tr>
                                     <td>Номер счёта</td>
                                     <td>
-                                        <input class="form-value" type="text">
+                                        <input class="form-value" type="text"
+                                               name="account_number"
+                                               required
+                                        >
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>За что</td>
                                     <td>
-                                        <select>
+                                        <select name="nds">
                                             <option>НДС 18%</option>
                                             <option>НДС 10%%</option>
                                             <option>без НДС</option>
@@ -66,51 +80,63 @@
                                 <tr>
                                     <td>Сколько</td>
                                     <td>
-                                        <input class="form-value" type="text">
+                                        <input class="form-value" type="number"
+                                               name="how_many"
+                                               required
+                                        >
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Номер телефона</td>
                                     <td>
-                                        <input class="form-value" type="text" placeholder="+7">
+                                        <input class="form-value" type="text" placeholder="+7"
+                                               name="phone"
+                                               required
+                                        >
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Эл.почта</td>
                                     <td>
-                                        <input class="form-value" type="text" placeholder="Для уведомлений об оплате">
+                                        <input class="form-value" type="email" placeholder="Для уведомлений об оплате"
+                                               name="email" required>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <input type="submit" value="Создать платёж">
+                                        <input type="submit" value="Создать платёж" name="create_payment" required>
                                     </td>
                                 </tr>
                             </table>
                         </div>
                     </form>
                 </div>
-                <div class="pay">
-                    <input type="radio" id="from-own-bank" name="select">
-                    <label id="from-own-bank-label" for="from-own-bank">Из своего интернет банка</label>&#160;&#160;
-                    <input type="radio" checked="checked" id="from-any-bank" name="select">
-                    <label id="from-any-bank-label" for="from-any-bank">С карты любого банка</label>&#160;&#160;
-                    <div class="from-any-bank">
-                        <form action=".">
+                <div class="pay" ng-show="! pay">
+                    <label id="from-own-bank-label" ng-click="own=false" ng-show="own">Из своего интернет банка</label>&#160;&#160;
+                    <label id="from-own-bank-label-1" ng-click="own=false" ng-show="! own">Из своего интернет банка</label>&#160;&#160;
+                    <label id="from-any-bank-label-1" ng-click="own=true" ng-show="own">С карты любого банка</label>&#160;&#160;
+                    <label id="from-any-bank-label" ng-click="own=true" ng-show="! own">С карты любого банка</label>&#160;&#160;
+                    <div class="from-any-bank" ng-show="own">
+                        <form method="POST" action=".">
+                            {% csrf_token %}
                             <div class="card-and-form">
                                 <div class="card">
                                     <table class="card-table">
                                         <tr>
                                             <th colspan="2">
-                                                <input class="card-name" type="text" placeholder="Номер карты">
+                                                <input class="card-name" type="text" placeholder="Номер карты"
+                                                       required pattern=".{16}" maxlength="16"
+                                                       name="card_num">
                                             </th>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input class="card-value" type="text" placeholder="ММ/ГГ">
+                                                <input class="card-value" type="text" placeholder="ММ/ГГ"
+                                                    required name="card-info">
                                             </td>
                                             <td>
-                                                <input class="card-value" type="text" placeholder="CVC">
+                                                <input class="card-value" type="text" placeholder="CVC"
+                                                       name="cvc" required pattern=".{3}" maxlength="3">
                                             </td>
                                         </tr>
                                     </table>
@@ -120,26 +146,30 @@
                                         <tr>
                                             <td>Сумма</td>
                                             <td>
-                                                <input class="form-value" type="text" placeholder="от 1000 до 75000 р">
+                                                <input class="form-value" type="number" placeholder="от 1000 до 75000 р"
+                                                       name="sum" required min="1000" max="75000" step="100">
                                             </td>
                                         </tr>
                                         <tr></tr>
                                         <tr>
                                             <td>Комментарий</td>
                                             <td>
-                                                <input class="form-value" type="text" placeholder="До 150 символов">
+                                                <input class="form-value" type="text" placeholder="До 150 символов"
+                                                       name="comment" maxlength="150">
                                             </td>
                                         </tr>
                                         <tr></tr>
                                         <tr>
                                             <td>Ваша эл.почта</td>
                                             <td>
-                                                <input class="form-value" type="text" placeholder="Для квитанций об оплате">
+                                                <input class="form-value" type="email" placeholder="Для квитанций об оплате"
+                                                       name="email" required>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="submit" value="Заплатить">
+                                                <input type="submit" value="Заплатить"
+                                                       name="pay" required>
                                             </td>
                                         </tr>
                                     </table>
@@ -147,35 +177,50 @@
                             </div>
                         </form>
                     </div>
-                    <div class="from-own-bank">
-                        <form action=".">
+                    <div class="from-own-bank" ng-show="! own">
+                        <form method="POST" action=".">
+                            {% csrf_token %}
                             <div class="form-block">
                                 Сформируйте платёжку и загрузите её в свой банк для подписи
                                 <table class="card-table">
                                     <tr>
                                         <td>От кого</td>
                                         <td>
-                                            <input class="form-value" type="text" placeholder="ИНН или название плательщика">
+                                            <input class="form-value" type="text" placeholder="ИНН или название плательщика"
+                                                   name="inn" required
+                                                   id="own-bank-inn"
+                                                   onkeyup="checkFromOwnBank()"
+                                            >
                                         </td>
                                     </tr>
                                     <tr></tr>
                                     <tr>
                                         <td>БИК</td>
                                         <td>
-                                            <input class="form-value" type="text">
+                                            <input class="form-value" type="text"
+                                                   name="bik" required
+                                                   id="own-bank-bik"
+
+                                                   onkeyup="checkFromOwnBank()"
+                                            >
                                         </td>
                                     </tr>
                                     <tr></tr>
                                     <tr>
                                         <td>Номер счёта</td>
                                         <td>
-                                            <input class="form-value" type="text">
+                                            <input class="form-value" type="text"
+                                                   id="own-bank-acc"
+                                                   name="account_number" required
+
+                                                   onkeyup="checkFromOwnBank()"
+                                            >
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>За что</td>
                                         <td>
-                                            <select>
+                                            <select name="nds">
                                                 <option>НДС 18%</option>
                                                 <option>НДС 10%%</option>
                                                 <option>без НДС</option>
@@ -185,12 +230,21 @@
                                     <tr>
                                         <td>Сколько</td>
                                         <td>
-                                            <input class="form-value" type="text">
+                                            <input class="form-value" type="number"
+                                                   name="how_many" required
+                                                   id="own-bank-count"
+
+                                                   step="100"
+                                                   onkeyup="checkFromOwnBank()"
+                                            >
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <input type="submit" value="Получить файл для интернет банка">
+                                            <input type="submit" value="Получить файл для интернет банка"
+                                                   name="get_file" disabled
+                                                   id="own-bank"
+                                            >
                                         </td>
                                     </tr>
                                 </table>
@@ -231,7 +285,7 @@
                 Контакты:
                 <a>+79196236913</a>
                 <a href="https://www.borya.cats">www.borya.cats</a>
-                <a href="mailto:borya@mail.ru">05-11-98@mail.ru</a>
+                <a href="mailto:borya@mail.ru">borya@mail.ru</a>
                 </div>
             </footer>
         </div>

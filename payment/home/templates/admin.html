@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="adminApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Админ панель</title>
+    <script src = "//ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+    <script type="text/javascript" src="/static/scripts/admin.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/css/admin.css">
+</head>
+<body ng-controller="adminAppCtrl">
+    <input type="radio" class="choose" name="choose" id="pay" checked>
+    <label id="pay-label" for="pay" ng-click="pay=false">Запрошенные платежи</label>&#160;&#160;
+    <input type="radio" class="choose" name="choose" id="ask">
+    <label id="ask-label" for="ask" ng-click="pay=true">Платежи с карты</label>&#160;&#160;
+    <div ng-show="pay">
+        <table id="from-card">
+        </table>
+        Поиск по таблице:
+        <select id="card-select">
+        </select>
+        <input id="card-search" type="text">
+    </div>
+    <div ng-show="! pay">
+        <table id="from-request">
+        </table>
+        Поиск по таблице:
+        <select id="request-select">
+        </select>
+        <input id="request-search" type="text">
+    </div>
+</body>
+</html>
