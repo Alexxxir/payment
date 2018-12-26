@@ -19,7 +19,7 @@ def home(request):
             response = HttpResponse(string)
             response['Content-Type'] = 'text/plain'
             response['Content-Length'] = len(string)
-            response['Content-Disposition'] = "attachment; filename=hui.txt"
+            response['Content-Disposition'] = "attachment; filename=for_bank.txt"
             return response
         elif 'create_payment' in post:
             request_payments = RequestedPayments(

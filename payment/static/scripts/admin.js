@@ -1,7 +1,7 @@
 const adminApp = angular.module("adminApp", []);
 
 adminApp.controller('adminAppCtrl', function($scope) {});
-let sortCard, sortReq, searchCard, searchReq = ["", "", "", ""];
+let [sortCard, sortReq, searchCard, searchReq] = ["", "", "", ""];
 
 $(function() {
     $("#from-request").load('/admin/from_request');
