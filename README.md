@@ -1,9 +1,9 @@
-#Оплата
+# Оплата
 
 http://iloveweb.pythonanywhere.com/admin/ - админка
 http://iloveweb.pythonanywhere.com/ - не админка
 
-###Админка
+### Админка
 http://iloveweb.pythonanywhere.com/admin/
 
 Не работает по https, надеюсь не критично.
