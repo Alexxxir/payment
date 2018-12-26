@@ -44,6 +44,7 @@
                                                placeholder="ИНН или название получателя"
                                                name="inn"
                                                id="your-bank-inn"
+                                               maxlength="12"
                                         >
                                     </td>
                                 </tr>
@@ -54,6 +55,7 @@
                                         <input class="form-value" type="text"
                                                name="bik"
                                                id="your-bank-bik"
+                                               maxlength="9"
                                         >
                                     </td>
                                 </tr>
@@ -64,6 +66,7 @@
                                         <input class="form-value" type="text"
                                                name="account_number"
                                                id="your-bank-acc"
+                                               maxlength="20"
                                         >
                                     </td>
                                 </tr>
@@ -92,6 +95,7 @@
                                         <input class="form-value" type="text" placeholder="+7 999 999-99-99"
                                                name="phone"
                                                id="your-bank-phone"
+                                               maxlength="16"
                                         >
                                     </td>
                                 </tr>
@@ -99,7 +103,9 @@
                                     <td>Эл.почта</td>
                                     <td>
                                         <input class="form-value" type="text" placeholder="Для уведомлений об оплате"
-                                               name="email" id="your-bank-email">
+                                               name="email" id="your-bank-email"
+                                               maxlength="150"
+                                               >
                                     </td>
                                 </tr>
                                 <tr>
@@ -128,17 +134,23 @@
                                             <th colspan="2">
                                                 <input class="card-name" type="text" placeholder="Номер карты"
                                                        id="any-bank-num"
-                                                       name="card_num">
+                                                       name="card_num"
+                                                       maxlength="16"
+                                                >
                                             </th>
                                         </tr>
                                         <tr>
                                             <td>
                                                 <input class="card-value" type="text" placeholder="ММ/ГГ"
-                                                    id="any-bank-info" name="card-info">
+                                                    id="any-bank-info" name="card-info"
+                                                    maxlength="5"
+                                                >
                                             </td>
                                             <td>
                                                 <input class="card-value" type="text" placeholder="CVC"
-                                                       name="cvc" id="any-bank-cvc">
+                                                       name="cvc" id="any-bank-cvc"
+                                                       maxlength="3"
+                                                >
                                             </td>
                                         </tr>
                                     </table>
@@ -157,7 +169,9 @@
                                             <td>Комментарий</td>
                                             <td>
                                                 <input class="form-value" type="text" placeholder="До 150 символов"
-                                                       name="comment" id="any-bank-comment">
+                                                       name="comment" id="any-bank-comment"
+                                                       maxlength="150"
+                                                >
                                             </td>
                                         </tr>
                                         <tr></tr>
@@ -165,7 +179,9 @@
                                             <td>Ваша эл.почта</td>
                                             <td>
                                                 <input class="form-value" type="text" placeholder="Для квитанций об оплате"
-                                                       name="email" id="any-bank-email">
+                                                       name="email" id="any-bank-email"
+                                                       maxlength="150"
+                                                >
                                             </td>
                                         </tr>
                                         <tr>
@@ -191,6 +207,7 @@
                                             <input class="form-value" type="text" placeholder="ИНН или название плательщика"
                                                    name="inn"
                                                    id="own-bank-inn"
+                                                   maxlength="12"
                                             >
                                         </td>
                                     </tr>
@@ -201,6 +218,7 @@
                                             <input class="form-value" type="text"
                                                    name="bik"
                                                    id="own-bank-bik"
+                                                   maxlength="9"
                                             >
                                         </td>
                                     </tr>
@@ -211,6 +229,7 @@
                                             <input class="form-value" type="text"
                                                    id="own-bank-acc"
                                                    name="account_number"
+                                                   maxlength="20"
                                             >
                                         </td>
                                     </tr>
