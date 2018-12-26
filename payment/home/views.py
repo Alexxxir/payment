@@ -18,7 +18,7 @@ def home(request):
             string = from_your_bank.to_string()
             response = HttpResponse(string)
             response['Content-Type'] = 'text/plain'
-            response['Content-Length'] = len(string)
+            response['Content-Length'] = len(response.content)
             response['Content-Disposition'] = "attachment; filename=for_bank.txt"
             return response
         elif 'create_payment' in post:
