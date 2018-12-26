@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="myApp">
+<html id="html" lang="en" ng-app="myApp">
     <head>
         <meta charset="UTF-8">
         <script src = "//ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
@@ -30,8 +30,9 @@
                 <label id="ask-label" ng-click="pay=true">Запросить платёж</label>&#160;&#160;
                 <br>
                 <div class="ask" ng-show="pay">
-                    <form method="POST" action="." id="your-bank-form">
+                    <form id="your-bank-form">
                         {% csrf_token %}
+                        <input type="hidden" name="create_payment" value="create_payment">
                         <div class="form-block">
                             Создайте платёжку, а Индивидуальный предприниматель Боря подпишет
                             её у себя в интернет-банке
@@ -117,8 +118,9 @@
                     <label id="from-any-bank-label-1" ng-click="own=true" ng-show="own">С карты любого банка</label>&#160;&#160;
                     <label id="from-any-bank-label" ng-click="own=true" ng-show="! own">С карты любого банка</label>&#160;&#160;
                     <div class="from-any-bank" ng-show="own">
-                        <form method="POST" action="." id="any-bank-form">
+                        <form id="any-bank-form">
                             {% csrf_token %}
+                            <input type="hidden" name="pay" value="pay">
                             <div class="card-and-form">
                                 <div class="card">
                                     <table class="card-table">

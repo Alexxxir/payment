@@ -4,6 +4,51 @@ myApp.controller('myAppCtrl', function($scope) {});
 
 jQuery(function($) {
     const emailValid = /^\w+([\.-]?\w+)*@(((([a-z0-9]{2,})|([a-z0-9][-][a-z0-9]+))[\.][a-z0-9])|([a-z0-9]+[-]?))+[a-z0-9]+\.([a-z]{2}|(com|net|org|edu|int|mil|gov|arpa|biz|aero|name|coop|info|pro|museum))$/i;
+
+    $('#your-bank-form').on('submit', function (event) {
+        event.preventDefault();
+        if ( validateYourBankForm() ) {
+            return false;
+        }
+
+        const msg = $('#your-bank-form').serialize();
+        $.ajax({
+            type: 'POST',
+            url: '.',
+            data: msg,
+            success: function(data) {
+                alert("ОК");
+                $('#your-bank-form')[0].reset();
+                window.location.reload();
+                },
+            error:  function(xhr, str){
+                alert('Возникла ошибка: ' + xhr.responseCode);
+            }
+        });
+    });
+
+    $('#any-bank-form').on('submit', function (event) {
+        event.preventDefault();
+        if ( validateAnyBankForm() ) {
+            return false;
+        }
+
+        const msg = $('#any-bank-form').serialize();
+        $.ajax({
+            type: 'POST',
+            url: '.',
+            data: msg,
+            success: function(data) {
+                alert("ОК");
+                $('#any-bank-form')[0].reset();
+                window.location.reload();
+                },
+            error:  function(xhr, str){
+                alert('Возникла ошибка: ' + xhr.responseCode);
+            }
+        });
+    });
+
     $('#own-bank-form').on('keyup click focus', function(event) {
         let submit = $('#own-bank');
         $('#own-bank-nds').toggleClass('ok', true);
@@ -311,7 +356,7 @@ jQuery(function($) {
         }
 
         let phone = $("#your-bank-phone");
-        let phoneValid = /\+\d \d\d\d \d\d\d-\d\d-\d\d/;
+        let phoneValid = /\+7 \d\d\d \d\d\d-\d\d-\d\d/;
         let vPhone = false;
         if (phone.val().length === 0) {
             vPhone = true;

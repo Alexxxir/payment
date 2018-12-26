@@ -38,7 +38,7 @@ class CardPayments(models.Model):
     email = models.EmailField(
         'Эл.почта',
         max_length=255,
-        unique=True,
+        null=True,
     )
 
     is_safe = models.BooleanField(
@@ -217,7 +217,7 @@ class RequestedPayments(models.Model):
     email = models.EmailField(
         'Эл.почта',
         max_length=255,
-        unique=True,
+        null=True,
     )
 
     nds = models.CharField(
